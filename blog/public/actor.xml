@@ -1,12 +1,12 @@
 <actors>
   <actor>
     <id>1</id>
-    <lastname>Berger</lastname>
-    <firstname>Michel</firstname>
+    <lastname>Smith</lastname>
+    <firstname>Will</firstname>
   </actor>
   <actor>
     <id>2</id>
-    <lastname>Bruel</lastname>
-    <firstname>Patrick</firstname>
+    <lastname>Robbie</lastname>
+    <firstname>Margot</firstname>
   </actor>
 </actors>
