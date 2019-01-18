@@ -33,16 +33,40 @@ class ActorController
     return new Response($jsonResponse);
   }
 
-  function getCategory($id) {
-    $category= [
-      "id" => $id,
-      "name" => "Catégorie ".$id
-    ];
+  function getActor($id) {
+    $xml = simplexml_load_file('category.xml');
+    $actors= [];
+    foreach($xml->children() as $var)
+    {
+      $arr = [];
+      foreach($var->children() as $child)
+      {
+        // echo $child->getName() . ": " . $child . "<br>";
+        $temp = $child->getName();
+        $val = str_replace($temp,'',$child->asXML());
+        $val = str_replace('<>','',$val);
+        $val = str_replace('</>','',$val);
+        $arr[$temp] = $val;
+      }
+      array_push($actors, $arr);
+    }
+    $actor = [];
+    foreach ($actors as $key) {
+      if($key["id"] == $id){
+        $actor = $key;
+        $jsonResponse = json_encode($actor);
+        return new Response($jsonResponse);
+      }
+      }
+        http_response_code(404);
+        die();
 
-    $jsonResponse = json_encode($category);
+        // $category= [
+        //   "id" => $id,
+        //   "name" => "Catégorie ".$id
+        // ];
 
-    return new Response($jsonResponse);
-  }
+      }
 
   function deleteCategory($id){
     $jsonResponse = json_encode([]);
