@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>gif Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      function Search(val){
+        $("#gif").html("");
+        $.ajax({
+          url: "https://api.giphy.com/v1/gifs/search?api_key=EQS4GipTP043dQgvMDVLc0TuzxEOQ44u&q="+val+"&limit=30",
+          success: function( result ) {
+            result.data.forEach(function(gif){
+              console.log(gif);
+              $("#gif").append("<img src='"+gif.images.downsized.url+"'><br>");
+            })
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <form onsubmit="Search(this.firstElementChild.value);return false;">
+      <input type="text" onchange="Search(this.value)">
+      <button type="submit">Chercher</button>
+    </form>
+    <div id="gif">
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  var i = 0;
+  var offset = 0;
+  $(document).ready(function(){
+    prevLaunches();
+  })
+  function ToggleModal(id){
+    $(id).modal('show');
+  }
+  function prevLaunches(){
+    callApi(offset);
+    offset += 3;
+  }
+  function callApi(offset = 0){
+    $.ajax({
+      url: "https://api.spacexdata.com/v3/launches/past?limit=3&order=desc&offset="+offset,
+      success: function( result ) {
+        result.forEach(function(launch){
+          var btn = "#button"+i;
+          var tr = "<tr><td><img src='";
+          if(launch.links.mission_patch == null){
+            tr = tr + "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png";
+          }else{
+            tr = tr + launch.links.mission_patch;
+          }
+          tr = tr +"' style='width:100px;'></td><td><span>"+launch.mission_name+"</span></td><td><span>"+launch.launch_year+"</span></td><td><button class='btn btn-info' id='button"+i+"'>Plus de d&eacute;tails</button></td></tr>";
+          $('#list').append(tr);
+          $(btn).attr("onclick","ToggleModal('#Modal"+i+"')");
+          //console.log(launch.links);
+          var mod = "<div class='modal fade' id='Modal"+i+"' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title'>"+launch.mission_name+"</h4></div>";
+          mod = mod + "<div class='modal-body'><p><strong>Details:</strong> "+launch.details+"</p><p><strong>Flight Number:</strong> "+launch.flight_number+"</p><p><strong>Launch Site:</strong> "+launch.launch_site.site_name_long+"</p><p><strong>Launch Date UTC:</strong> "+launch.launch_date_utc+"</p><p><strong>Rocket:</strong> "+launch.rocket.rocket_name+"</p><p><a href='"+launch.links.article_link+"' target='_blank' class='btn btn-link'>Official Article</a></p><a href='mission.html?id="+launch.flight_number+"' class='btn btn-success'>More info about this mission</a></div>";
+          mod = mod + "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div>";
+          mod = mod + "</div></div></div>";
+          $('#modal-list').append(mod);
+          console.log(launch);
+          i++;
+        });
+      }
+    });
+  }
+  </script>
+</head>
+<body>
+  <div class="container-fluid">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="list">
+      </tbody>
+    </table>
+    <div>
+      <a href="#" class="btn btn-warning btn-lg" onclick="prevLaunches();return false;">Plus<a>
+    </div>
+    <div id="modal-list">
+    </div>
+  </div>
+</body>
+</html>
