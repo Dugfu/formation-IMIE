@@ -80,6 +80,7 @@ class MovieController
               }
             }
             $final = $category;
+            $arr[$temp] = $final;
             }else{
               $val = str_replace($temp,'',$child->asXML());
               $val = str_replace('<>','',$val);
