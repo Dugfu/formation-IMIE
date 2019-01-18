@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+header('Access-Control-Allow-Origin: *');
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,16 +57,16 @@ class ActorController
         $jsonResponse = json_encode($actor);
         return new Response($jsonResponse);
       }
-      }
-        http_response_code(404);
-        die();
+    }
+    http_response_code(404);
+    die();
 
-        // $category= [
-        //   "id" => $id,
-        //   "name" => "Catégorie ".$id
-        // ];
+    // $category= [
+    //   "id" => $id,
+    //   "name" => "Catégorie ".$id
+    // ];
 
-      }
+  }
 
   function deleteCategory($id){
     $jsonResponse = json_encode([]);

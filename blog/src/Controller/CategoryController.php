@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+header('Access-Control-Allow-Origin: *');
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
