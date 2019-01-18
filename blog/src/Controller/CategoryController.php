@@ -9,13 +9,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController
 {
     function getAllCategories() {
-        $categories= [
-            ["name" => "Categorie 1"],
-            ["name" => "Categorie 2"],
-            ["name" => "Categorie 3"],
-        ];
+        $xml = simplexml_load_file('category.xml');
+        $categories= [];
+        foreach($xml->children() as $var)
+        {
+          $arr = [];
+          foreach($var->children() as $child)
+          {
+          // echo $child->getName() . ": " . $child . "<br>";
+          $temp = $child->getName();
+          $val = str_replace($temp,'',$child->asXML());
+          $val = str_replace('<>','',$val);
+          $val = str_replace('</>','',$val);
+          $arr[$temp] = $val;
+          }
+          array_push($categories, $arr);
+        }
+        // $categories= [
+        //     ["id" => $var, "name" => ($xml->name)],
+        // ];
         $jsonResponse = json_encode($categories);
-
+        // print_r($categories);
         return new Response($jsonResponse);
     }
 

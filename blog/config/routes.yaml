@@ -3,6 +3,11 @@ categories:
     methods: [GET]
     controller: App\Controller\CategoryController::getAllCategories
 
+category_post:
+    path: /categories
+    methods: [POST]
+    controller: App\Controller\CategoryController::getCategoryByName
+
 category:
   path: /categories/{id}
   methods: [GET]
@@ -12,3 +17,8 @@ category_delete:
   path: /categories/{id}
   methods: [DELETE]
   controller: App\Controller\CategoryController::deleteCategory
+
+category_create:
+  path: /categories/{id}
+  methods: [PUT]
+  controller: App\Controller\CategoryController::createCategory
