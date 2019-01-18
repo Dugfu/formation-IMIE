@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+header('Access-Control-Allow-Origin: *');
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -199,7 +199,9 @@ class MovieController
       // ];
 
     }
+    function createMovie(){
 
+    }
     function deleteMovie($id){
       $jsonResponse = json_encode([]);
       return new Response($jsonResponse);
