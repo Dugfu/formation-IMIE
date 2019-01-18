@@ -23,22 +23,21 @@
     data.forEach(function(movie){
 
       $('#movie').append(
-        "<li><h1>"+movie.title+"</h1></li>\n" +
-        "<li>"+movie.year+"</li>\n"+
-        "<li><img src='"+movie.poster+"'></li>\n"+
-        "<li>"+movie.synopsis+"</li>\n"
+        "<div class='card d-inline-flex' style='width: 18rem;'>\n" +
+        "        <img class='card-img-top' src='"+movie.poster+"' >\n" +
+        "        <div class='card-body' style='text-align:center'>\n" +
+        "            <h5 class='card-title'>"+movie.title+"</h5><span>"+movie.year+"</span> -\n" +
+        "            <span>"+movie.category.name+"</span><br><br>\n" +
+        "            <a href='movie.html?id="+movie.id+"' class='btn btn-primary' target='_blank'>See more</a>\n" +
+        "        </div>\n" +
+        "    </div>"
       );
-      movie.actors.forEach(function(actor){
-        $('#movie').append(
-          "<li>"+actor.firstname+" "+actor.lastname+"</li>\n"
-        )
-      });
-      // movie.category.forEach(function(category){
-        $('#movie').append(
-          "<li>"+movie.category.name+"</li><br>\n"
-        )
-      // });
 
+      // movie.actors.forEach(function(actor){
+      //   $('#movie').append(
+      //     "<li>"+actor.firstname+" "+actor.lastname+"</li>\n"
+      //   )
+      // });
 
     });
 
