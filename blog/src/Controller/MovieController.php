@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController
 {
   function getAllMovies() {
-    $xml = simplexml_load_file('category.xml');
+    $xml = simplexml_load_file('movie.xml');
     $movies= [];
     foreach($xml->children() as $var)
     {
@@ -34,7 +34,7 @@ class MovieController
   }
 
   function getMovie($id) {
-    $xml = simplexml_load_file('category.xml');
+    $xml = simplexml_load_file('movie.xml');
     $movies= [];
     foreach($xml->children() as $var)
     {
