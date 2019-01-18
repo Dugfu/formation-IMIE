@@ -34,7 +34,7 @@ class ActorController
   }
 
   function getActor($id) {
-    $xml = simplexml_load_file('category.xml');
+    $xml = simplexml_load_file('actor.xml');
     $actors= [];
     foreach($xml->children() as $var)
     {
