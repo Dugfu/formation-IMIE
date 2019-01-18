@@ -1,30 +1,32 @@
 # API Doc
 
-## Authors
-
-| URI        | Method           | Params  | Response |
-| ---------- |:-------------:| -----:| --- |
-| /authors   | GET |  | 200: ``` [ { "id": 42, "name": "John", "email": "email@domain.net"}, {..} ] ``` |
-| /authors   | POST      |   *required* body ``` {"name": "John", "email": "email@domain.net" } ``` | 201: ``` { "id": 42, "name": "John", "email": "email@domain.net", "articles": [ {"id": 1, "title": "Titre de l'article"}]} ``` |
-| /authors/{id}   | GET      |     | 200: ``` { "id": 42, "name": "John", "email": "email@domain.net", "articles": [ {"id": 1, "title": "Titre de l'article"}]} ``` |
-
-## Article
-
-| URI        | Method           | Params  | Response |
-| ---------- |:-------------:| -----:| --- |
-| /articles   | GET |  | 200: ``` [ { "id": 42, "title": "Titre", "description": "Description de l'article...", author: { "id": 42, "name": "John", email: "email@domain.net"}, {..} ] ``` |
-| /articles   | POST      |   *required* body ``` {"title": "Titre", "description": "description", "author": 42, "category": 1  } ``` | 201: ``` { "id": 42, "title": "Titre", "description": "Description de l'article...", author: { "id": 42, "name": "John", email: "email@domain.net"} }``` | 200: ``` { "id": 42, "title": "Titre", "description": "Description de l'article...", author: { "id": 42, "name": "John", email: "email@domain.net"} }``` |
-| /articles/{id}   | GET      |     | 200: ``` { "id": 42, "title": "Titre", "description": "Description de l'article...", author: { "id": 42, "name": "John", email: "email@domain.net"} }``` |
-| /articles/{id}   | DELETE      |     | 200 ``` {} ``` |
-| /articles/{id}   | PUT      |  *required* body ``` {"title": "Titre", "description": "description", "author": 42, "category": 1  } ```   | 200: ``` { "id": 42, "title": "Titre", "description": "Description de l'article...", "author": 42 }``` |
-
-
 ## Category
 
 | URI        | Method           | Params  | Response |
 | ---------- |:-------------:| -----:| --- |
-| /categories   | GET |  | 200: ``` [ { "id": 42, "name": "Nom"}, {..} ] ``` |
-| /categories   | POST      |   *required* body ``` {"name": "Titre"} ``` | 201: ``` { "id": 42, "name": "Nom"}``` |
-| /categories/{id}   | GET      |     | 200: ``` { "id": 42, "name": "Nom"}``` |
+| /categories   | GET |  | 200: ``` [ { "id": 42, "name": "Name"}, {..} ] ``` |
+| /categories   | POST      |   *required* body ``` {"name": "Name"} ``` | 201: ``` { "id": 42, "name": "Name"}``` | 200: ``` { "id": 42, "name": "Name"}``` |
+| /categories/{id}   | GET      |     | 200: ``` { "id": 42, "name": "Name"} }``` |
 | /categories/{id}   | DELETE      |     | 200 ``` {} ``` |
-| /categories/{id}   | PUT      |  *required* body ``` {"name": "Titre"} ```   | 200: ``` { "id": 42, "name": "Nom"}``` |
+| /categories/{id}   | PUT      |  *required* body ``` {"name": "Name"} ```   | 200: ``` { "id": 42, "name": "Name"}``` |
+
+## Movie
+
+| URI        | Method           | Params  | Response |
+| ---------- |:-------------:| -----:| --- |
+| /movies   | GET |  | 200: ``` [ { "id": 42, "title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", actor: { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}, category: { "id": 1, "name": "Name"} }, {..} ] ``` |
+| /movies   | POST      |   *required* body ``` {"title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", "actor": [42, ..], "category": 1 } ``` | 201: ``` { "id": 42, "title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", actor: { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}, category: { "id": 1, "name": "Name"} }``` | 200: ``` { "id": 42, "title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", actor: { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}, category: { "id": 1, "name": "Name"} }``` |
+| /movies/{id}   | GET      |     | 200: ``` { "id": 42, "title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", actor: [{ "id": 42, "lastname": "Lastname", "firstname": "Firstname"}, {..} ], category: { "id": 1, "name": "Name"} }``` |
+| /movies/{id}   | DELETE      |     | 200 ``` {} ``` |
+| /movies/{id}   | PUT      |  *required* body ``` {"title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", "actor": [42, ..], "category": 1 } ```   | 200: ``` {"title": "Title", "year": "Year", "poster": "Poster", "synopsis": "Synopsis", "actor": [42, ..], "category": 1 }``` |
+
+
+## Actor
+
+| URI        | Method           | Params  | Response |
+| ---------- |:-------------:| -----:| --- |
+| /actors   | GET |  | 200: ``` [ { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}, {..} ] ``` |
+| /actors   | POST      |   *required* body ``` {"lastname": "Lastname", "firstname": "Firstname" } ``` | 201: ``` { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}``` | 200: ``` { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}``` |
+| /actors/{id}   | GET      |     | 200: ``` { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}``` |
+| /actors/{id}   | DELETE      |     | 200 ``` {} ``` |
+| /actors/{id}   | PUT      |  *required* body ``` {"lastname": "Lastname", "firstname": "Firstname" } ```   | 200: ``` { "id": 42, "lastname": "Lastname", "firstname": "Firstname"}``` |
