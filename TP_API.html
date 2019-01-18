@@ -14,7 +14,7 @@
     $.ajax({
       url: 'http://localhost:8000/movies',
       method: 'GET',
-      dataType: 'object',
+      dataType: 'json',
     }).done(function(data){
       console.log(data);
     }).fail(function(){
