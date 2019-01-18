@@ -9,16 +9,68 @@ category_post:
     controller: App\Controller\CategoryController::getCategoryByName
 
 category:
-  path: /categories/{id}
-  methods: [GET]
-  controller: App\Controller\CategoryController::getCategory
+    path: /categories/{id}
+    methods: [GET]
+    controller: App\Controller\CategoryController::getCategory
 
 category_delete:
-  path: /categories/{id}
-  methods: [DELETE]
-  controller: App\Controller\CategoryController::deleteCategory
+    path: /categories/{id}
+    methods: [DELETE]
+    controller: App\Controller\CategoryController::deleteCategory
 
 category_create:
-  path: /categories/{id}
-  methods: [PUT]
-  controller: App\Controller\CategoryController::createCategory
+    path: /categories/{id}
+    methods: [PUT]
+    controller: App\Controller\CategoryController::createCategory
+
+
+actors:
+    path: /actors
+    methods: [GET]
+    controller: App\Controller\ActorController::getAllActors
+
+actors_post:
+    path: /actors
+    methods: [POST]
+    controller: App\Controller\ActorController::getActorByName
+
+actor:
+    path: /actors/{id}
+    methods: [GET]
+    controller: App\Controller\ActorController::getActor
+
+actor_delete:
+    path: /actors/{id}
+    methods: [DELETE]
+    controller: App\Controller\ActorController::deleteActor
+
+actor_create:
+    path: /actors/{id}
+    methods: [PUT]
+    controller: App\Controller\ActorController::createActor
+
+
+movies:
+    path: /movies
+    methods: [GET]
+    controller: App\Controller\MovieController::getAllMovies
+
+movies_post:
+    path: /movies
+    methods: [POST]
+    controller: App\Controller\MovieController::getMovieByName
+
+movie:
+    path: /movies/{id}
+    methods: [GET]
+    controller: App\Controller\MovieController::getMovie
+
+movie_delete:
+    path: /movies/{id}
+    methods: [DELETE]
+    controller: App\Controller\MovieController::deleteMovie
+
+movie_create:
+    path: /movies/{id}
+    methods: [PUT]
+    controller: App\Controller\MovieController::createMovie

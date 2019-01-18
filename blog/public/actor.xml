@@ -1,0 +1,12 @@
+<actors>
+  <actor>
+    <id>1</id>
+    <lastname>Berger</lastname>
+    <firstname>Michel</firstname>
+  </actor>
+  <actor>
+    <id>2</id>
+    <lastname>Bruel</lastname>
+    <firstname>Patrick</firstname>
+  </actor>
+</actors>
